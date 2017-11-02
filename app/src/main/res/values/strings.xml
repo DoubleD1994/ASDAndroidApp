@@ -36,4 +36,5 @@
     <string name="bright_button">Bright</string>
     <string name="med_bright_button">Medium</string>
     <string name="dark_bright_button">Dull</string>
+    <string name="calendar_button">Insert Event</string>
 </resources>

@@ -1,7 +1,9 @@
 package com.example.daviddryburgh.asdandroidapp;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 /**
  * Created by daviddryburgh on 01/11/2017.
@@ -34,6 +44,37 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final EditText title = (EditText) findViewById(R.id.event_title);
+        final EditText location = (EditText) findViewById(R.id.event_location);
+        final EditText notes = (EditText) findViewById(R.id.event_notes);
+
+        final DatePicker start_date = (DatePicker) findViewById(R.id.start_date);
+        final DatePicker end_date = (DatePicker) findViewById(R.id.end_date);
+
+        Button insertEvent = (Button) findViewById(R.id.insert_event);
+
+        insertEvent.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String eTitle = title.getText().toString();
+                String eLocation = location.getText().toString();
+                String eNotes = notes.getText().toString();
+
+
+                Intent calIntent = new Intent(Intent.ACTION_INSERT);
+                calIntent.setType("vnd.android.cursor.item/event");
+                calIntent.putExtra(CalendarContract.Events.TITLE, eTitle);
+                calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, eLocation);
+                calIntent.putExtra(CalendarContract.Events.DESCRIPTION, eNotes);
+
+                GregorianCalendar calDateStart = new GregorianCalendar(start_date.getYear(), start_date.getMonth(), start_date.getDayOfMonth());
+                GregorianCalendar calDateEnd = new GregorianCalendar(end_date.getYear(), end_date.getMonth(), end_date.getDayOfMonth());
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, calDateStart.getTimeInMillis());
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, calDateEnd.getTimeInMillis());
+                startActivity(calIntent);
+            }
+        });
+
     }
 
     @Override
