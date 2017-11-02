@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.daviddryburgh.asdandroidapp">
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="ASD Android"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Geolocation"
+            android:label="Geolocation"/>
+
+        <activity android:name=".Camera"
+        android:label="Camera"/>
+
+        <activity android:name=".Calendar"
+            android:label="Calendar"/>
+
+        <activity android:name=".Brightness"
+            android:label="Brightness"/>
+
+        <activity android:name=".Flashlight"
+            android:label="Flashlight"/>
+
+        <activity android:name=".Vibration"
+            android:label="Vibration"/>
+
+        <activity android:name=".Notifications"
+            android:label="Notifications"/>
+
+        <activity android:name=".ScreenOrientation"
+            android:label="Screen Orientation"/>
+
+        <activity android:name=".Screenshot"
+            android:label="Screenshot"/>
+
+        <activity android:name=".SocialSharing"
+            android:label="Social Sharing"/>
+
+
+    </application>
+
+
+
+</manifest>

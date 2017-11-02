@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Welcome To Android</string>
+    <string name="app_home">Home</string>
+    <string name="app_geolocation">Geolocation</string>
+    <string name="app_camera">Camera</string>
+    <string name="app_calendar">Calendar</string>
+    <string name="app_brightness">Brightness</string>
+    <string name="app_flashlight">Flashlight</string>
+    <string name="app_vibration">Vibration</string>
+    <string name="app_screen_orientation">Screen Orientation</string>
+    <string name="app_notifications">Notifications</string>
+    <string name="app_social_sharing">Social Sharing</string>
+    <string name="app_screenshot">Screenshot</string>
+    <string name="menu_title">Menu</string>
+
+    <string name="asd_main">ASD Android App</string>
+    <string name="geolocation">This is Geolocation Page</string>
+    <string name="camera">This is Camera Page</string>
+    <string name="calendar">This is Calendar Page</string>
+    <string name="brightness">This is Brightness Page</string>
+    <string name="flashlight">This is Flashlight Page</string>
+    <string name="vibration">Vibrate the device once for 2 seconds</string>
+    <string name="screen_orientation">This is Screen Orientation Page</string>
+    <string name="notifications">This is Notifications Page</string>
+    <string name="social_sharing">This is Social Sharing Page</string>
+    <string name="screenshot">This is Screenshot Page</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
+    <string name="vibrate_button">Vibrate</string>
+    <string name="vibrate_pause_button">Vibrate Pause Vibrate</string>
+    <string name="vibrate_pause">Vibrate for a second, pause for a second, vibrate for a second</string>
+    <string name="bright_button">Bright</string>
+    <string name="med_bright_button">Medium</string>
+    <string name="dark_bright_button">Dull</string>
+</resources>

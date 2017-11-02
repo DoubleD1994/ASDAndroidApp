@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/highBrightness"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/light"
+        android:text="@string/bright_button"
+        android:textSize="26dp"
+        android:textColor="@color/dark"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <Button
+        android:id="@+id/medBrightness"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/medium"
+        android:text="@string/med_bright_button"
+        android:textSize="26dp"
+        android:textColor="@color/dark"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <Button
+        android:id="@+id/darkBrightness"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/dark"
+        android:text="@string/dark_bright_button"
+        android:textSize="26dp"
+        android:textColor="@color/colorNavText"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+</RelativeLayout>

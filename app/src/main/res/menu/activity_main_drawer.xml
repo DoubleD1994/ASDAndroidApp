@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:title="@string/app_home"
+            />
+        <item
+            android:id="@+id/geolocation"
+            android:title="@string/app_geolocation"
+            />
+
+        <item
+            android:id="@+id/camera"
+            android:title="@string/app_camera"
+            />
+
+        <item
+            android:id="@+id/calendar"
+            android:title="@string/app_calendar"
+            />
+
+        <item
+            android:id="@+id/brightness"
+            android:title="@string/app_brightness"
+            />
+
+        <item
+            android:id="@+id/flashlight"
+            android:title="@string/app_flashlight"
+            />
+
+        <item
+            android:id="@+id/vibration"
+            android:title="@string/app_vibration"
+            />
+
+        <item
+            android:id="@+id/screen_orientation"
+            android:title="@string/app_screen_orientation"
+            />
+
+        <item
+            android:id="@+id/notifications"
+            android:title="@string/app_notifications"
+            />
+
+        <item
+            android:id="@+id/social_sharing"
+            android:title="@string/app_social_sharing"
+            />
+
+        <item
+            android:id="@+id/screenshot"
+            android:title="@string/app_screenshot"
+            />
+    </group>
+
+</menu>
