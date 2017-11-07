@@ -15,4 +15,27 @@
         android:layout_marginTop="100dp"
         />
 
+    <EditText
+        android:id="@+id/notification_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Notes"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <Button
+        android:id="@+id/push_notification"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/bright"
+        android:text="@string/push_notification"
+        android:textSize="26dp"
+        android:textColor="@color/dark"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
 </RelativeLayout>

@@ -21,7 +21,7 @@
     <string name="flashlight">This is Flashlight Page</string>
     <string name="vibration">Vibrate the device once for 2 seconds</string>
     <string name="screen_orientation">This is Screen Orientation Page</string>
-    <string name="notifications">This is Notifications Page</string>
+    <string name="notifications">Notification Message</string>
     <string name="social_sharing">This is Social Sharing Page</string>
     <string name="screenshot">This is Screenshot Page</string>
 
@@ -39,4 +39,5 @@
     <string name="calendar_button">Insert Event</string>
     <string name="flashlight_off">Turn Off Flashlight</string>
     <string name="flashlight_on">Turn On Flashlight</string>
+    <string name="push_notification">Push Notification</string>
 </resources>

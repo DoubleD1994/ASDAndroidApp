@@ -1,5 +1,8 @@
 package com.example.daviddryburgh.asdandroidapp;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,12 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * Created by daviddryburgh on 01/11/2017.
  */
 
 public class Notifications extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    Button pushNotification;
+    EditText message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,24 @@ public class Notifications extends AppCompatActivity implements NavigationView.O
 
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        pushNotification = (Button) findViewById(R.id.push_notification);
+        message = (EditText) findViewById(R.id.notification_message);
+
+        pushNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String m = message.getText().toString();
+
+                NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                Notification notification = new Notification.Builder(
+                        getApplicationContext()).setContentTitle("ASD Android Message").setContentText(m).
+                        setContentTitle("Android App Says:").setSmallIcon(R.drawable.ic_launcher_foreground).build();
+
+                notification.flags |= Notification.FLAG_AUTO_CANCEL;
+                notificationManager.notify(0, notification);
+            }
+        });
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
