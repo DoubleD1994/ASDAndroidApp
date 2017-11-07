@@ -1,7 +1,11 @@
 package com.example.daviddryburgh.asdandroidapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 /**
  * Created by daviddryburgh on 01/11/2017.
@@ -17,6 +23,11 @@ import android.view.MenuItem;
 
 public class Flashlight extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Button btnOn;
+    private Button btnOff;
+    String cameraId;
+
+    CameraManager cameraManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +39,37 @@ public class Flashlight extends AppCompatActivity implements NavigationView.OnNa
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );
+
+        btnOn = (Button) findViewById(R.id.flashlight_on);
+        btnOff = (Button) findViewById(R.id.flashlight_off);
+        cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+        try {
+            cameraId = cameraManager.getCameraIdList()[0];
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
+
+        btnOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    cameraManager.setTorchMode(cameraId, true);
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    cameraManager.setTorchMode(cameraId, false);
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         drawer.setDrawerListener(toggle);
         toggle.syncState();

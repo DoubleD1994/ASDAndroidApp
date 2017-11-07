@@ -37,4 +37,6 @@
     <string name="med_bright_button">Medium</string>
     <string name="dark_bright_button">Dull</string>
     <string name="calendar_button">Insert Event</string>
+    <string name="flashlight_off">Turn Off Flashlight</string>
+    <string name="flashlight_on">Turn On Flashlight</string>
 </resources>
