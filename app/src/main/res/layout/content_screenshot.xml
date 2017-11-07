@@ -6,13 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <EditText
+        android:id="@+id/image_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/screenshot"
+        android:layout_height="wrap_content"
+        android:hint="Enter Screenshot name"
         android:padding="20dp"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         />
+
+    <Button
+        android:id="@+id/take_screenshot"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/assertive"
+        android:text="@string/take_screenshot"
+        android:textSize="26dp"
+        android:textColor="@color/colorNavText"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:onClick="screenShot"
+        />
+
 
 </RelativeLayout>

@@ -1,21 +1,41 @@
 package com.example.daviddryburgh.asdandroidapp;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by daviddryburgh on 01/11/2017.
  */
 
 public class Screenshot extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    Bitmap mbitmap;
+    Button btnCapture;
+    EditText imageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +52,50 @@ public class Screenshot extends AppCompatActivity implements NavigationView.OnNa
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        btnCapture = (Button) findViewById(R.id.take_screenshot);
+        imageName = (EditText) findViewById(R.id.image_name);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void screenShot(View view){
+        mbitmap = getBitmapOFRootView(btnCapture);
+        createImage(mbitmap);
+    }
+
+    public Bitmap getBitmapOFRootView(View v){
+        View rootview = v.getRootView();
+        rootview.setDrawingCacheEnabled(true);
+        Bitmap bitmap1 = rootview.getDrawingCache();
+        return bitmap1;
+    }
+
+    public void createImage(Bitmap bmp) {
+
+        final File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        path.mkdirs();
+        File imageFile = new File(path, imageName.getText().toString()+".png");
+
+        try{
+            FileOutputStream out = new FileOutputStream(imageFile);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+
+            MediaScannerConnection.scanFile(Screenshot.this, new String[]{imageFile.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                @Override
+                public void onScanCompleted(String s, Uri uri) {
+                    Log.i("External storage", "Scanned" + path + ":");
+                    Log.i("External Storage", "-> uri=" + uri);
+                }
+            });
+        } catch (Exception e){
+            Log.e("createImage()", e.getMessage());
+        }
+
+
+
     }
 
     @Override

@@ -44,4 +44,5 @@
     <string name="lock_portrait">Lock Portrait Orientation</string>
     <string name="lock_landscape">Lock Landscape Orientation</string>
     <string name="unlock_orientation">Unlock Orientation</string>
+    <string name="take_screenshot">Take Screenshot</string>
 </resources>
