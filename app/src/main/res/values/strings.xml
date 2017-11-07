@@ -40,4 +40,8 @@
     <string name="flashlight_off">Turn Off Flashlight</string>
     <string name="flashlight_on">Turn On Flashlight</string>
     <string name="push_notification">Push Notification</string>
+    <string name="current_orientation">Current Orientation</string>
+    <string name="lock_portrait">Lock Portrait Orientation</string>
+    <string name="lock_landscape">Lock Landscape Orientation</string>
+    <string name="unlock_orientation">Unlock Orientation</string>
 </resources>
