@@ -47,4 +47,5 @@
     <string name="take_screenshot">Take Screenshot</string>
     <string name="social_sharing_message">Message</string>
     <string name="share_message">Share</string>
+    <string name="take_image">Take Image</string>
 </resources>

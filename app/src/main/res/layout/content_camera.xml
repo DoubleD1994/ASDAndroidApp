@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/camera"
-        android:padding="20dp"
-        android:textSize="30sp"
-        android:layout_marginTop="100dp"
-        />
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/take_picture"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/secondary"
+            android:text="@string/take_image"
+            android:textSize="26dp"
+            android:textColor="@color/colorNavText"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latest Image:"
+            android:textSize="26dp"
+            android:textColor="@color/dark"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <ImageView
+            android:id="@+id/show_picture"
+            android:layout_width="250dp"
+            android:layout_height="400dp"
+            android:background="@color/light"
+            android:layout_marginTop="290dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            />
+
+    </RelativeLayout>
+</ScrollView>

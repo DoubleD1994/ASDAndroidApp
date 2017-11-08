@@ -1,21 +1,38 @@
 package com.example.daviddryburgh.asdandroidapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * Created by daviddryburgh on 01/11/2017.
  */
 
 public class Camera extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final int CAMERA_REQUEST = 1888;
+    private ImageView imageView;
+    Button btnTakeImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +49,53 @@ public class Camera extends AppCompatActivity implements NavigationView.OnNaviga
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        imageView = (ImageView)findViewById(R.id.show_picture);
+        btnTakeImage = (Button) findViewById(R.id.take_picture);
+        btnTakeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK){
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(photo);
+            createImage(photo);
+        }
+    }
+
+    public void createImage(Bitmap bmp) {
+
+        final File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        path.mkdirs();
+        File imageFile = new File(path, "something.png");
+
+        try{
+            FileOutputStream out = new FileOutputStream(imageFile);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+
+            MediaScannerConnection.scanFile(Camera.this, new String[]{imageFile.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                @Override
+                public void onScanCompleted(String s, Uri uri) {
+                    Log.i("External storage", "Scanned" + path + ":");
+                    Log.i("External Storage", "-> uri=" + uri);
+                }
+            });
+        } catch (Exception e){
+            Log.e("createImage()", e.getMessage());
+        }
+
+
+
     }
 
     @Override
