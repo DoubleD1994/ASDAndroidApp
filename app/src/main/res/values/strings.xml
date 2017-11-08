@@ -45,4 +45,6 @@
     <string name="lock_landscape">Lock Landscape Orientation</string>
     <string name="unlock_orientation">Unlock Orientation</string>
     <string name="take_screenshot">Take Screenshot</string>
+    <string name="social_sharing_message">Message</string>
+    <string name="share_message">Share</string>
 </resources>

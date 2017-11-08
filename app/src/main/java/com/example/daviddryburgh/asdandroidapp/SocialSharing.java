@@ -10,12 +10,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * Created by daviddryburgh on 01/11/2017.
  */
 
 public class SocialSharing extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    Button btnShare;
+    EditText the_message;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,22 @@ public class SocialSharing extends AppCompatActivity implements NavigationView.O
 
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        btnShare = (Button) findViewById(R.id.share_message);
+        the_message = (EditText) findViewById(R.id.message);
+
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                message = the_message.getText().toString();
+                share.putExtra(Intent.EXTRA_TEXT, message);
+
+                startActivity(Intent.createChooser(share, "Share with: "));
+            }
+        });
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
