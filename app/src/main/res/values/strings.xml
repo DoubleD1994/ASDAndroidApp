@@ -13,7 +13,19 @@
     <string name="app_screenshot">Screenshot</string>
     <string name="menu_title">Menu</string>
 
-    <string name="asd_main">ASD Android App</string>
+    <string name="asd_first_box">
+        This app was developed with native Android
+    </string>
+    <string name="asd_second_box">
+        Its purpose is to show its use of Native API\'s
+    </string>
+    <string name="asd_third_box">
+        This can then be used to compare it against a cross-platform application developed with Ionic
+    </string>
+    <string name="asd_fourth_box">
+        The API\'s used are ones that are commonly used in mobile applications
+    </string>
+
     <string name="geolocation">This is Geolocation Page</string>
     <string name="camera">This is Camera Page</string>
     <string name="calendar">This is Calendar Page</string>
